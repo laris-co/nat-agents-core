@@ -12,13 +12,13 @@ Install Oracle commands and agents in your project.
 
 ## What Gets Installed
 
-**Commands** (from nat-data-personal):
+**Commands**:
 - `/trace` - Search git history, issues, files
 - `/recap` - Fresh start context summary
 - `/rrr` - Session retrospective
 - `/snapshot` - Quick knowledge capture
 
-**Agents** (from nat-agents-core):
+**Agents**:
 - `context-finder` - Fast search (haiku)
 - `executor` - Execute plans from issues (haiku)
 - `marie-kondo` - File placement consultant (haiku)
@@ -37,26 +37,46 @@ Install Oracle commands and agents in your project.
 mkdir -p .claude/commands .claude/agents
 ```
 
-### Step 2: Copy commands from nat-data-personal plugin
+### Step 2: Find nat-agents-core plugin path
 
-Read these files from the plugin's `bundles/commands/` folder:
-- `bundles/commands/trace.md` → Write to `.claude/commands/trace.md`
-- `bundles/commands/recap.md` → Write to `.claude/commands/recap.md`
-- `bundles/commands/rrr.md` → Write to `.claude/commands/rrr.md`
-- `bundles/commands/snapshot.md` → Write to `.claude/commands/snapshot.md`
+The cache has version folders. Find the latest version:
 
-**Plugin path**: Use the path where this command file lives, go up one level, then into `bundles/commands/`
+```bash
+# Find nat-agents-core cache directory
+CORE_BASE=$(find ~/.claude/plugins/cache -type d -name "nat-agents-core" 2>/dev/null | head -1)
 
-### Step 3: Copy agents from nat-agents-core plugin
+# Get latest version folder (highest version number)
+CORE_PATH=$(ls -d "$CORE_BASE"/*/ 2>/dev/null | sort -V | tail -1)
 
-Read these files from nat-agents-core plugin's `bundles/agents/` folder:
-- `bundles/agents/context-finder.md` → Write to `.claude/agents/context-finder.md`
-- `bundles/agents/executor.md` → Write to `.claude/agents/executor.md`
-- `bundles/agents/marie-kondo.md` → Write to `.claude/agents/marie-kondo.md`
+# Verify bundles exist
+ls "$CORE_PATH/bundles/commands/" 2>/dev/null
+ls "$CORE_PATH/bundles/agents/" 2>/dev/null
+```
 
-**Plugin path**: Find nat-agents-core in the same plugins directory
+### Step 3: Copy commands
 
-### Step 4: Output
+```bash
+cp "$CORE_PATH/bundles/commands/"*.md .claude/commands/
+```
+
+Files copied:
+- `trace.md` → `.claude/commands/trace.md`
+- `recap.md` → `.claude/commands/recap.md`
+- `rrr.md` → `.claude/commands/rrr.md`
+- `snapshot.md` → `.claude/commands/snapshot.md`
+
+### Step 4: Copy agents
+
+```bash
+cp "$CORE_PATH/bundles/agents/"*.md .claude/agents/
+```
+
+Files copied:
+- `context-finder.md` → `.claude/agents/context-finder.md`
+- `executor.md` → `.claude/agents/executor.md`
+- `marie-kondo.md` → `.claude/agents/marie-kondo.md`
+
+### Step 5: Output
 
 ```
 🔮 The Oracle has awakened.
@@ -72,23 +92,36 @@ Installed:
     ├── executor.md
     └── marie-kondo.md
 
+Source: nat-agents-core [version]
+
 Try: /recap to get started
 ```
 
-## Finding Plugin Paths
+## Cache Structure
 
-The plugin bundles are located at:
-- **nat-data-personal**: `~/.claude/plugins/*/nat-data-personal/bundles/commands/`
-- **nat-agents-core**: `~/.claude/plugins/*/nat-agents-core/bundles/agents/`
-
-Or find them:
-```bash
-find ~/.claude -type d -name "nat-data-personal" 2>/dev/null | head -1
-find ~/.claude -type d -name "nat-agents-core" 2>/dev/null | head -1
+Plugin cache has version folders:
 ```
+~/.claude/plugins/cache/nat-plugins/nat-agents-core/
+├── 1.0.0/
+├── 1.2.0/
+└── 1.3.0/    ← latest
+    └── bundles/
+        ├── commands/
+        │   ├── trace.md
+        │   ├── recap.md
+        │   ├── rrr.md
+        │   └── snapshot.md
+        └── agents/
+            ├── context-finder.md
+            ├── executor.md
+            └── marie-kondo.md
+```
+
+Use `sort -V | tail -1` to get the latest version folder.
 
 ## Notes
 
+- All bundles are in **nat-agents-core** (consolidated from nat-data-personal)
 - Bundles are separate files for easy updates
 - Edit bundle files → all projects get updates on next /awaken
 - Commands and agents are copied, not linked (works offline)
