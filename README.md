@@ -1,59 +1,61 @@
 # nat-agents-core
 
-Claude Code plugin: Core agents and commands for multi-project use.
+Core agents and commands for Claude Code — workflow automation + project initialization.
 
 ## Installation
 
-```bash
-/install nat-agents-core
+```
+/plugin install nat-agents-core@nat-plugins
 ```
 
-Or add to `.claude/settings.json`:
-```json
-{
-  "enabledPlugins": {
-    "nat-agents-core@nat-agents-core": true
-  }
-}
+First time? Add the marketplace first:
 ```
-
-## Agents
-
-| Agent | Purpose |
-|-------|---------|
-| `context-finder` | Fast search through git history, files, codebase |
-| `coder` | Write code from specs |
-| `executor` | Execute bash commands from specs |
-| `planner` | Create implementation plans |
+/plugin marketplace add laris-co/nat-plugins
+```
 
 ## Commands
 
-| Command | Purpose |
-|---------|---------|
-| `/context-finder` | Search git/issues/retrospectives |
+| Command | What it does |
+|---------|--------------|
+| `/awaken` | 🔮 Install commands + agents to your project |
+| `/soul-init` | Create full ψ/ structure + Obsidian vault |
+| `/soul-lite` | Create minimal ψ/ (memory only) |
+| `/oracle-init` | Setup Oracle/Shadow philosophy |
+| `/context-finder` | Search git history, issues, files |
 
-## Usage
+## What /awaken Installs
 
-These agents are available via the Task tool:
+Running `/awaken` in your project installs:
+
+**Commands** (to `.claude/commands/`):
+- `/trace` - Search git, issues, files
+- `/recap` - Fresh start context summary
+- `/rrr` - Session retrospective
+- `/snapshot` - Quick knowledge capture
+- `/forward` - Forward context to new session
+- `/wip` - Show work in progress
+- `/standup` - Daily standup
+
+**Agents** (to `.claude/agents/`):
+- `context-finder` - Fast search (haiku)
+- `executor` - Run commands from specs (haiku)
+- `marie-kondo` - File placement consultant (haiku)
+
+## Quick Start
 
 ```
-subagent_type: nat-agents-core:context-finder
-subagent_type: nat-agents-core:executor
-subagent_type: nat-agents-core:coder
-subagent_type: nat-agents-core:planner
-```
+# 1. Install plugin
+/plugin install nat-agents-core@nat-plugins
 
-## Development
+# 2. Initialize your project (choose one)
+/soul-lite                    # Minimal setup
+/soul-init                    # Full setup with Obsidian
 
-```bash
-# Clone via ghq
-ghq get laris-co/nat-agents-core
+# 3. Install workflow commands
+/awaken
 
-# Edit commands/agents
-cd ~/Code/github.com/laris-co/nat-agents-core
-
-# After changes, clear cache + restart Claude Code
-rm -rf ~/.claude/plugins/cache/nat-plugins/
+# 4. Start working
+/recap
 ```
 
 ## License
