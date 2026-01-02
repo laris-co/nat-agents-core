@@ -195,7 +195,7 @@ Cycle continues...
 | Skill | Status | Purpose |
 |-------|--------|---------|
 | oracle | ✅ Done | Consult for decisions |
-| oracle-incubate | 🔲 Planned | Track knowledge maturation |
+| oracle-incubate | ✅ Done | Track knowledge maturation |
 | oracle-teach | 🔲 Planned | Generate learning materials |
 | oracle-path | 🔲 Planned | Create learning paths |
 

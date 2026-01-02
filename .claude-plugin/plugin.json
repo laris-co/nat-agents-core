@@ -1,6 +1,6 @@
 {
   "name": "nat-agents-core",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "description": "Reusable workflow agents + soul/oracle initialization commands. GitHub-optional.",
   "author": {
     "name": "Nat",

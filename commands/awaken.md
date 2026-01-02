@@ -14,7 +14,7 @@ Install Oracle commands and agents in your project.
 
 **Commands**: trace, recap, rrr, snapshot, forward, wip, standup, now, hours, jump, pending
 **Agents**: context-finder, executor, marie-kondo
-**Skills**: handoff, context-finder, oracle
+**Skills**: handoff, context-finder, oracle, oracle-incubate
 
 > Note: `hours`, `jump`, `pending` work best after `/soul-init` or `/soul-lite`
 
@@ -44,8 +44,8 @@ Installed:
 │   └── trace, recap, rrr, snapshot, forward, wip, standup, now, hours, jump, pending
 ├── .claude/agents/ (3 agents)
 │   └── context-finder, executor, marie-kondo
-└── .claude/skills/ (3 skills)
-    └── handoff, context-finder, oracle
+└── .claude/skills/ (4 skills)
+    └── handoff, context-finder, oracle, oracle-incubate
 
 Try: /recap to get started
 ```
