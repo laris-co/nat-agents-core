@@ -30,7 +30,7 @@ mkdir -p .claude/commands .claude/agents
 Run this single command:
 
 ```bash
-CORE=$(ls -d ~/.claude/plugins/cache/nat-plugins/nat-agents-core/*/ 2>/dev/null | sort -V | tail -1) && mkdir -p .claude/scripts && cp "$CORE"bundles/commands/*.md .claude/commands/ && cp "$CORE"bundles/agents/*.md .claude/agents/ && cp "$CORE"bundles/scripts/*.sh .claude/scripts/ 2>/dev/null && chmod +x .claude/scripts/*.sh 2>/dev/null && echo "✅ Installed from $CORE"
+CORE=`ls -d ~/.claude/plugins/cache/nat-plugins/nat-agents-core/*/ 2>/dev/null | sort -V | tail -1` && mkdir -p .claude/scripts && cp "$CORE"bundles/commands/*.md .claude/commands/ && cp "$CORE"bundles/agents/*.md .claude/agents/ && cp "$CORE"bundles/scripts/*.sh .claude/scripts/ 2>/dev/null && chmod +x .claude/scripts/*.sh 2>/dev/null && echo "✅ Installed from $CORE"
 ```
 
 ### Step 3: Output
@@ -52,3 +52,4 @@ Try: /recap to get started
 - Single command copies everything
 - Uses `sort -V` to get latest version folder
 - Works offline after installation
+- Uses backticks for bash/zsh compatibility
