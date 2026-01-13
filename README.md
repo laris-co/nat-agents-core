@@ -61,6 +61,18 @@ cd your-project
 - `executor` - Execute plans (haiku)
 - `marie-kondo` - File placement (haiku)
 
+**Skills** (to `.claude/skills/`):
+
+| Skill | Purpose |
+|-------|---------|
+| `/where-we-are` | Session awareness (quick/deep modes) |
+| `/project` | Clone & track repos via ghq |
+| `/learn` | Explore codebase with 3 parallel agents |
+| `/oracle` | Oracle philosophy reference |
+| `/handoff` | Context handoff |
+| `/context-finder` | Search skill |
+| `oracle-*` | Oracle utilities (incubate, teach, path, mentor) |
+
 ### Project Structure After Setup
 
 ```
@@ -70,7 +82,8 @@ your-project/
 │   │   ├── oracle-philosophy.md
 │   │   └── writing-style.md
 │   ├── commands/    ← installed by /awaken
-│   └── agents/      ← installed by /awaken
+│   ├── agents/      ← installed by /awaken
+│   └── skills/      ← installed by /awaken
 └── ψ/
     ├── HOME.md
     ├── WIP.md
